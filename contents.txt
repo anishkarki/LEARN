@@ -1,0 +1,36 @@
+    items = sorted(items)
+    number = len(items)
+    total = int(sum(items))
+    mean = total/number
+    if number % 2 != 0 :
+        med = number//2
+        median = items[med]
+    else:
+        med = number//2
+        median = (items[med-1]+items[med])/2
+    
+    
+    median = "{0:0.1f}".format(median)
+    mean  = "{0:0.1f}".format(mean)
+    print (mean)
+    print (median)
+    counter = Counter(items)
+    inv_map = counter.most_common(1)
+    for a in inv_map:
+        mode = a[0]
+    return mean,median,mode
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    s = list(map(int, input().lstrip().split()))
+    mean,median,mode = getStat(s)
+
+    fptr.write(str(mean) + '\n')
+    fptr.write(str(median) + '\n')
+    fptr.write(str(mode) + '\n')
+
+    fptr.close()
